@@ -1,0 +1,3 @@
+Title,Description,URL,Image,Video
+Todo GUI,"This is a simple desktop-based To-Do List application built using Python and PySimpleGUI. It allows users to manage tasks through a lightweight graphical interface — add, view, and mark tasks as complete, all from a user-friendly window.",https://github.com/AthyDope/my-todo-gui,ToDo_GUI.png,ToDo_GUI.mp4
+Todo App,"This is a simple and interactive To-Do list web application built using Python and Streamlit. It allows users to add, check off, and manage their daily tasks in a clean web interface.",https://todo-atharvachaphe.streamlit.app/,ToDo_APP.png,ToDo_App.mp4
