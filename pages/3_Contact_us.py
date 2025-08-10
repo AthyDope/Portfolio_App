@@ -2,6 +2,38 @@ import streamlit as st
 from send_email import send_email
 import pandas
 
+# Inject custom CSS for responsiveness
+st.markdown("""
+    <style>
+    /* Make images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Make text wrap nicely */
+    h1, h2, h3, p {
+        word-wrap: break-word;
+    }
+
+    /* Adjust padding and margin for mobile */
+    .block-container {
+        padding: 1rem;
+    }
+
+    /* Buttons full width on mobile */
+    @media only screen and (max-width: 768px) {
+        .stButton>button {
+            width: 100%;
+        }
+        .stTextInput>div>div>input {
+            width: 100%;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
 df = pandas.read_csv("topics.csv")
 
 st.header("Contact Us")

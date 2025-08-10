@@ -1,5 +1,36 @@
 import streamlit as st
+st.set_page_config(layout="wide")  # <- put this right after importing streamlit
 from PIL import Image
+# Inject custom CSS for responsiveness
+st.markdown("""
+    <style>
+    /* Make images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Make text wrap nicely */
+    h1, h2, h3, p {
+        word-wrap: break-word;
+    }
+
+    /* Adjust padding and margin for mobile */
+    .block-container {
+        padding: 1rem;
+    }
+
+    /* Buttons full width on mobile */
+    @media only screen and (max-width: 768px) {
+        .stButton>button {
+            width: 100%;
+        }
+        .stTextInput>div>div>input {
+            width: 100%;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # Set wide layout
 st.set_page_config(layout="wide")

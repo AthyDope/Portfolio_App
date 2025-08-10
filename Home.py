@@ -1,5 +1,37 @@
 import streamlit as st
 
+# Inject custom CSS for responsiveness
+st.markdown("""
+    <style>
+    /* Make images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Make text wrap nicely */
+    h1, h2, h3, p {
+        word-wrap: break-word;
+    }
+
+    /* Adjust padding and margin for mobile */
+    .block-container {
+        padding: 1rem;
+    }
+
+    /* Buttons full width on mobile */
+    @media only screen and (max-width: 768px) {
+        .stButton>button {
+            width: 100%;
+        }
+        .stTextInput>div>div>input {
+            width: 100%;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
 st.set_page_config(layout="wide")
 
 params = st.query_params
@@ -14,6 +46,7 @@ st.markdown(f"""
             display: flex;
             justify-content: center;
             padding: 12px 0;
+            margin-top: 34px;
             border-bottom: 2px solid #444;
         }}
         .topnav a {{
@@ -36,41 +69,54 @@ st.markdown(f"""
     </style>
 
     <div class="topnav">
-        <a href="/?page=Home" class="{ 'active' if page == 'Home' else '' }">Home</a>
-        <a href="/?page=About" class="{ 'active' if page == 'About' else '' }">About Me</a>
-        <a href="/?page=Projects" class="{ 'active' if page == 'Projects' else '' }">Projects</a>
-        <a href="/?page=Tech" class="{ 'active' if page == 'Tech' else '' }">Tech Stack</a>
-        <a href="/?page=Contact" class="{ 'active' if page == 'Contact' else '' }">Contact Us</a>
+        <a href="/?page=Home" target="_self" class="{ 'active' if page == 'Home' else '' }">Home</a>
+        <a href="/?page=1_About_Me" target="_self" class="{ 'active' if page == '1_About_Me' else '' }">About Me</a>
+        <a href="/?page=2_Projects" target="_self" class="{ 'active' if page == '2_Projects' else '' }">Projects</a>
+        <a href="/?page=4_Tech_stack" target="_self" class="{ 'active' if page == '4_Tech_stack' else '' }">Tech Stack</a>
+        <a href="/?page=3_Contact_us" target="_self" class="{ 'active' if page == '3_Contact_us' else '' }">Contact Us</a>
+        <a href="/?page=5_BLogs" target="_self" class="{ 'active' if page == '5_Blogs' else '' }">Blogs</a>
     </div>
 """, unsafe_allow_html=True)
 
 # --- Render the Selected Page ---
 if page == "Home":
     st.title("Welcome to my Portfolio website.")
-    # st.write("")
-    # Your home page content goes here
 
-elif page == "About":
-    with open("pages/About_Me.py", encoding="utf-8") as f:
+elif page == "1_About_Me":
+    with open("pages/1_About_Me.py", encoding="utf-8") as f:
         exec(f.read(), {"st": st})
 
-elif page == "Projects":
-    with open("pages/Projects.py", encoding="utf-8") as f:
+elif page == "2_Projects":
+    with open("pages/2_Projects.py", encoding="utf-8") as f:
         exec(f.read(), {"st": st})
 
-elif page == "Tech":
-    with open("pages/Tech_stack.py", encoding="utf-8") as f:
+elif page == "4_Tech_stack":
+    with open("pages/4_Tech_stack.py", encoding="utf-8") as f:
         exec(f.read(), {"st": st})
 
-elif page == "Contact":
-    with open("pages/Contact_us.py", encoding="utf-8") as f:
+elif page == "3_Contact_us":
+    with open("pages/3_Contact_us.py", encoding="utf-8") as f:
+        exec(f.read(), {"st": st})
+
+elif page == "5_Blogs":
+    with open("pages/5_Blogs.py", encoding="utf-8") as f:
         exec(f.read(), {"st": st})
 
 col1, col2 = st.columns(2)
 
 with col1:
-    # st.markdown("<br>", unsafe_allow_html=True)
-    st.image("images/ChatGPT_Home.png", width=450)
+    st.image("images/ChatGPT_Home.png", width=450, output_format="PNG")
+    st.markdown(
+        """
+        <style>
+            div[data-testid="stImage"] {
+                text-align: left;
+                margin-left: 105px;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 with col2:
     st.title("Atharva Chaphe")
